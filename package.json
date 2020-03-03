@@ -30,5 +30,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Task dependencies",
+  "main": "index.js",
+  "repository": "https://github.com/pauliuspad/warehouse_task.git",
+  "author": "Paulius Pad",
+  "license": "MIT"
 }
