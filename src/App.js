@@ -1,7 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
+
 import Products from './components/Products';
-// import AddProduct from './components/AddProduct'
+//import AddProduct from './components/AddProduct'
+import LayoutHeader from './Layout/Header';
+
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import uuidv4 from 'uuid/v4'
@@ -9,7 +13,6 @@ import uuidv4 from 'uuid/v4'
 const LOCAL_STORAGE_KEY = 'warehouseApp.products'
 
 function App() {
-
 
   const [products, setProduct] = useState([])
 
@@ -38,7 +41,7 @@ function App() {
   }
 
   function deleteProduct(id){
-    const newProducts = products.filter(product => product.ID != id)
+    const newProducts = products.filter(product => product.ID !== id)
     setProduct(newProducts)
   }
 
@@ -54,40 +57,53 @@ function App() {
     const Price = productPrice.current.value
 
     setProduct(prevProducts => {
-      return [...prevProducts, {ID: uuidv4(), Name: Name, EAN, Type, Weight, Color, Quantity, Price, Active: false}]
+      return [...prevProducts, {ID: uuidv4(), Name , EAN, Type, Weight, Color, Quantity, Price, Active: false}]
     })
-
-    console.log(productName.current.value)
-    console.log(productEAN.current.value)
-    console.log(productType.current.value)
   }
  
-
-
-
   return (
-    <div className="App">
+    <Router>
+      <div className="App">
+        <LayoutHeader />
+        <Route exact path="/products/create" render={props => (
+          <React.Fragment>
+            <form>
+              <input ref={productName} type="text" name="Name" placeholder="Name of the product" ></input>
+              <input ref={productEAN} type="number" name="EAN" placeholder="EAN" ></input>
+              <input ref={productType} type="text" name="Type" placeholder="Type" ></input>
+              <input ref={productWeight} type="number" name="Weight" placeholder="Weight" ></input>
+              <input ref={productColor} type="text" name="Color" placeholder="Color" ></input>
+              <input ref={productQuantity} type="number" name="Quantity" placeholder="Quantity" ></input>
+              <input ref={productPrice} type="number" name="Price" placeholder="Price" ></input>
+              <Button variant="success"  onClick={addProduct}> Save </Button>
+            </form>
+          </React.Fragment>
+        )} />
+        
+        <Route exact path="/products" render={props => (
+          <React.Fragment>
+            <h3>Warehouse app</h3>
+            <div>
+            <Products products = {products} toggleProduct = {toggleProduct} deleteProduct= {deleteProduct} />
+            </div>
+          </React.Fragment>
+        )} />
 
-<form>
-     <input ref={productName} type="text" name="Name" placeholder="Name of the product" ></input>
-     <input ref={productEAN} type="number" name="EAN" placeholder="EAN" ></input>
-     <input ref={productType} type="text" name="Type" placeholder="Type" ></input>
-     <input ref={productWeight} type="number" name="Weight" placeholder="Weight" ></input>
-     <input ref={productColor} type="text" name="Color" placeholder="Color" ></input>
-     <input ref={productQuantity} type="number" name="Quantity" placeholder="Quantity" ></input>
-     <input ref={productPrice} type="number" name="Price" placeholder="Price" ></input>
-     <Button variant="success"  onClick={addProduct}> Save </Button>
- </form>
-      
-
-
-
-     <h3>Warehouse app</h3>
-     <div>
-      <Products products = {products} toggleProduct = {toggleProduct} deleteProduct= {deleteProduct} />
-    </div>
-    
-    </div>
+        <Route exact path="/products/{id}" render={props => (
+          <React.Fragment>
+            
+          </React.Fragment>
+        )} />
+        
+        <Route exact path="/products/{id}/edit" render={props => (
+          <React.Fragment>
+            
+          </React.Fragment>
+        )} />
+        
+        
+      </div>
+    </Router>
   );
 }
 

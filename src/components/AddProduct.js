@@ -1,36 +1,41 @@
-import React, { useState } from 'react';
-import ProductsItems from './ProductItem';
+import React, { useState, useRef } from 'react';
+//import ProductsItems from './ProductItem';
 import PropTypes from 'prop-types';
 
 function addProduct(props) {
-    
-    const [products, addProduct] = useState([])
 
-   var state = {
-        Name: '',
-        EAN: '',
-        Type: '',
-        Weight: '',
-        Color: '',
-        Quantity: '',
-        Price: '',
-    }
+    const productName = useRef()
+    const productEAN= useRef()
+    const productType = useRef()
+    const productWeight = useRef()
+    const productColor = useRef()
+    const productQuantity = useRef()
+    const productPrice = useRef()
 
-    function onChange(e) {
-        this.setState({ [e.target.name]: e.target.value})
+    function saveProduct(){ 
+        const Name = productName.current.value
+        const EAN = productEAN.current.value
+        const Type = productType.current.value
+        const Weight = productWeight.current.value
+        const Color = productColor.current.value
+        const Quantity = productQuantity.current.value
+        const Price = productPrice.current.value
+
+        props.addNewProduct(Name, EAN, Type, Weight, Color, Quantity, Price)
     }
 
   return (
-  <form>
-      <input type="text" name="Name" placeholder="Name of the product" value={this.state.Name} onchange={onChange}></input>
-      <input type="number" name="EAN" placeholder="EAN" value={this.state.EAN} onchange={onChange}></input>
-      <input type="text" name="Type" placeholder="Type" value={this.state.Type} onchange={onChange}></input>
-      <input type="number" name="Weight" placeholder="Weight" value={this.state.Weight} onchange={onChange}></input>
-      <input type="text" name="Color" placeholder="Color" value={this.state.Color} onchange={onChange}></input>
-      <input number="text" name="Quantity" placeholder="Quantity" value={this.state.Quantity} onchange={onChange}></input>
-      <input number="text" name="Price" placeholder="Price" value={this.state.Price} onchange={onChange}></input>
-      <input type="submit" value="Save" className="btn" />
-  </form>
+    <form>
+        <input ref={productName} type="text" name="Name" placeholder="Name of the product" ></input>
+        <input ref={productEAN} type="number" name="EAN" placeholder="EAN" ></input>
+        <input ref={productType} type="text" name="Type" placeholder="Type" ></input>
+        <input ref={productWeight} type="number" name="Weight" placeholder="Weight" ></input>
+        <input ref={productColor} type="text" name="Color" placeholder="Color" ></input>
+        <input ref={productQuantity} type="number" name="Quantity" placeholder="Quantity" ></input>
+        <input ref={productPrice} type="number" name="Price" placeholder="Price" ></input>
+        <Button variant="success"  onClick={saveProduct}> Save </Button>
+    </form>
+
   )
 }
 
