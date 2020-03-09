@@ -11,7 +11,7 @@ const LOCAL_STORAGE_KEY = 'warehouseApp.products'
 function App() {
 
 
-  const [products, setProduct] = useState([{ "ID": 1, "Name": "Broccoli", "EAN": "4111111111111", "Type": "vegetable", "Weight": "1", "Color": "Green", "Active": false, "Quantity": [3,5,6], "Price": [3, 4, 6]}])
+  const [products, setProduct] = useState([])
 
   const productName = useRef()
   const productEAN= useRef()
@@ -31,24 +31,16 @@ function App() {
   }, [products])
 
   function toggleProduct(id) {
-    console.log("Works12")
     const newProducts = [...products]
     const product = newProducts.find(product => product.ID === id)
     product.Active = !product.Active
     setProduct(newProducts)
   }
 
-  // var state = {
-  //      ID: '',
-  //      Name: '',
-  //      EAN: '',
-  //      Type: '',
-  //      Weight: '',
-  //      Color: '',
-  //      Quantity: '',
-  //      Price: '',
-  //      Active: ''
-  //  }
+  function deleteProduct(id){
+    const newProducts = products.filter(product => product.ID != id)
+    setProduct(newProducts)
+  }
 
    // adds Products to Products list. 
    // ToDo add checking to check if required inputs are not empty. Afther check clear inputs (productName.current.value = null ...)
@@ -92,7 +84,7 @@ function App() {
 
      <h3>Warehouse app</h3>
      <div>
-      <Products products = {products} toggleProduct = {toggleProduct} />
+      <Products products = {products} toggleProduct = {toggleProduct} deleteProduct= {deleteProduct} />
     </div>
     
     </div>

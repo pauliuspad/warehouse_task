@@ -36,10 +36,13 @@ style = {{toggleProduct1}}
   // console.log(props.singleProduct)
 
   
-   function productState() {
-    props.toggleProduct(props.product.ID)
-    console.log(props.product.ID)
-}
+    function productState() {
+        props.toggleProduct(props.product.ID)
+    }
+
+    function removeProduct(){
+        props.deleteProduct(props.product.ID)
+    }
 
 return (
     <div >
@@ -55,7 +58,7 @@ return (
         <input type="checkbox" checked={props.product.Active} onChange={productState} />
         <Button variant="outline-secondary" >VIEW</Button>
         <Button variant="outline-info" >EDIT</Button>
-        <Button variant="outline-danger" >DELETE</Button>
+        <Button variant="outline-danger" onClick={removeProduct} >DELETE</Button>
     </div>
     </div>
 
