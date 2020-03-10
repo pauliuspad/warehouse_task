@@ -75,7 +75,7 @@ function App() {
         <Route exact path="/products/create" render={props => (
           <React.Fragment>
             <FieldNames/>
-            <form>
+            <form className=' ProductsGrid'>
               <input ref={productName} type="text" name="Name" placeholder="Name of the product" ></input>
               <input ref={productEAN} type="number" name="EAN" placeholder="EAN" ></input>
               <input ref={productType} type="text" name="Type" placeholder="Type" ></input>
@@ -90,11 +90,9 @@ function App() {
         
         <Route exact path="/products" render={props => (
           <React.Fragment>
-            <h3>Warehouse app</h3>
             <FieldNames/>
             
             <Products products = {products} toggleProduct = {toggleProduct} deleteProduct= {deleteProduct} setViewProp={setViewProp} />
-            
           </React.Fragment>
         )} />
 

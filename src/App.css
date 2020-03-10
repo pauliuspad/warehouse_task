@@ -25,4 +25,24 @@ a {
   color: white;
 }
 
+.alignTextR {
+  text-align: right;
+}
 
+
+.ProductsGrid {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  grid-gap: 5px;
+  margin-bottom: 15px;
+  padding: 10px 0px;
+}
+
+.fieldsNameStyle {
+  background: #96b1c7c9;
+}
+
+.ProductItemsStyle {
+align-items: center;
+background: #b4d9f359;
+}
