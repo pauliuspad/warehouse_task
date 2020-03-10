@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
 
 import Products from './components/Products';
 //import AddProduct from './components/AddProduct'
 import LayoutHeader from './Layout/Header';
+import Preview from './Layout/PreviewProducts';
+import FieldNames from './Layout/FieldNames';
 
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -60,13 +62,19 @@ function App() {
       return [...prevProducts, {ID: uuidv4(), Name , EAN, Type, Weight, Color, Quantity, Price, Active: false}]
     })
   }
+
+    function setViewProp(id){
+     var selectedProduct = products.filter(product => product.ID === id)
+      console.log(selectedProduct[0].ID)
+    }
  
   return (
-    <Router>
+    <Router path="/products" >
       <div className="App">
         <LayoutHeader />
         <Route exact path="/products/create" render={props => (
           <React.Fragment>
+            <FieldNames/>
             <form>
               <input ref={productName} type="text" name="Name" placeholder="Name of the product" ></input>
               <input ref={productEAN} type="number" name="EAN" placeholder="EAN" ></input>
@@ -75,7 +83,7 @@ function App() {
               <input ref={productColor} type="text" name="Color" placeholder="Color" ></input>
               <input ref={productQuantity} type="number" name="Quantity" placeholder="Quantity" ></input>
               <input ref={productPrice} type="number" name="Price" placeholder="Price" ></input>
-              <Button variant="success"  onClick={addProduct}> Save </Button>
+              <Link to='/products' > <Button variant="success"  onClick={addProduct}> Save </Button> </Link>
             </form>
           </React.Fragment>
         )} />
@@ -83,15 +91,16 @@ function App() {
         <Route exact path="/products" render={props => (
           <React.Fragment>
             <h3>Warehouse app</h3>
-            <div>
-            <Products products = {products} toggleProduct = {toggleProduct} deleteProduct= {deleteProduct} />
-            </div>
+            <FieldNames/>
+            
+            <Products products = {products} toggleProduct = {toggleProduct} deleteProduct= {deleteProduct} setViewProp={setViewProp} />
+            
           </React.Fragment>
         )} />
 
-        <Route exact path="/products/{id}" render={props => (
+        <Route exact path="/products/view" render={props => (
           <React.Fragment>
-            
+            <Preview setViewProp={setViewProp} />
           </React.Fragment>
         )} />
         
