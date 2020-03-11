@@ -41,7 +41,7 @@ function ProductsItems(props) {
             <input type="checkbox" checked={props.product.Active} onChange={productState} />
             </div>
             <div style={{gridColumn: '9 / 12'}}>
-            <Link to="/products/view"> <Button variant="outline-secondary" onClick={ showProduct }>VIEW</Button></Link>
+            <Link to={"/products/" + props.product.ID}> <Button variant="outline-secondary" onClick={ showProduct }>VIEW</Button></Link>
             <Link to="/products"> <Button variant="outline-info" onClick={ changeProduct }>EDIT</Button> </Link>
             <Button variant="outline-danger" onClick={ removeProduct } >DELETE</Button>
             </div>

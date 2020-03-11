@@ -64,9 +64,16 @@ function App() {
   }
 
     function setViewProp(id){
-     var selectedProduct = products.filter(product => product.ID === id)
-      console.log(selectedProduct[0].ID)
+    //   console.log('given id ' + id)
+    //   products.map((product) => {console.log( product)})
+    //   const newProducts = [...products]
+    //  const selectedProduct = newProducts.filter(product => product.ID === id)
+     
+    //  console.log( selectedProduct)
+     return  id
+      
     }
+    console.log(setViewProp)
  
   return (
     <Router path="/products" >
@@ -75,7 +82,7 @@ function App() {
         <Route exact path="/products/create" render={props => (
           <React.Fragment>
             <FieldNames/>
-            <form className=' ProductsGrid'>
+            <div className=' ProductsGrid'>
               <input ref={productName} type="text" name="Name" placeholder="Name of the product" ></input>
               <input ref={productEAN} type="number" name="EAN" placeholder="EAN" ></input>
               <input ref={productType} type="text" name="Type" placeholder="Type" ></input>
@@ -84,7 +91,7 @@ function App() {
               <input ref={productQuantity} type="number" name="Quantity" placeholder="Quantity" ></input>
               <input ref={productPrice} type="number" name="Price" placeholder="Price" ></input>
               <Link to='/products' > <Button variant="success"  onClick={addProduct}> Save </Button> </Link>
-            </form>
+            </div>
           </React.Fragment>
         )} />
         
@@ -96,9 +103,9 @@ function App() {
           </React.Fragment>
         )} />
 
-        <Route exact path="/products/view" render={props => (
+        <Route exact path={"/products/" + setViewProp} render={props => (
           <React.Fragment>
-            <Preview setViewProp={setViewProp} />
+            <Preview products={products} />
           </React.Fragment>
         )} />
         
