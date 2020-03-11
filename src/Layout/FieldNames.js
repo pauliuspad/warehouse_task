@@ -3,7 +3,7 @@ import React from 'react';
 function FieldNames() {
 
     if(window.location.pathname.split("/").pop() !== 'create'){
-      var  activeCheck = <div style={{'text-align': 'center'}}>Active</div>
+      var  activeCheck = <div style={{textAlign: 'center'}}>Active</div>
      }
 
   return (

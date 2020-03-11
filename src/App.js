@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+
 import './App.css';
 
 import Products from './components/Products';
-//import AddProduct from './components/AddProduct'
+import Preview from './components/PreviewProducts';
+import EditProduct from './components/EditProducts';
 import LayoutHeader from './Layout/Header';
-import Preview from './Layout/PreviewProducts';
 import FieldNames from './Layout/FieldNames';
 
 import Button from 'react-bootstrap/Button';
@@ -16,6 +17,7 @@ const LOCAL_STORAGE_KEY = 'warehouseApp.products'
 
 function App() {
 
+  //state set up
   const [products, setProduct] = useState([])
 
   const productName = useRef()
@@ -26,11 +28,13 @@ function App() {
   const productQuantity = useRef()
   const productPrice = useRef()
   
+  //Loads state form local storage
   useEffect(() => {
     const storedproducts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
     if (storedproducts) {setProduct(storedproducts)}
   }, [])
 
+  //Saves state to local storage
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(products))
   }, [products])
@@ -63,25 +67,13 @@ function App() {
     })
   }
 
-    function setViewProp(id){
-    //   console.log('given id ' + id)
-    //   products.map((product) => {console.log( product)})
-    //   const newProducts = [...products]
-    //  const selectedProduct = newProducts.filter(product => product.ID === id)
-     
-    //  console.log( selectedProduct)
-     return  id
-      
-    }
-    console.log(setViewProp)
- 
+ // ToDo: bug vith Routs
   return (
     <Router path="/products" >
       <div className="App">
         <LayoutHeader />
         <Route exact path="/products/create" render={props => (
           <React.Fragment>
-            <FieldNames/>
             <div className=' ProductsGrid'>
               <input ref={productName} type="text" name="Name" placeholder="Name of the product" ></input>
               <input ref={productEAN} type="number" name="EAN" placeholder="EAN" ></input>
@@ -98,23 +90,22 @@ function App() {
         <Route exact path="/products" render={props => (
           <React.Fragment>
             <FieldNames/>
-            
-            <Products products = {products} toggleProduct = {toggleProduct} deleteProduct= {deleteProduct} setViewProp={setViewProp} />
+            <Products products = {products} toggleProduct = {toggleProduct} deleteProduct= {deleteProduct} />
           </React.Fragment>
         )} />
-
-        <Route exact path={"/products/" + setViewProp} render={props => (
+        
+        <Route exact path={"/products/edit"} render={props => (
           <React.Fragment>
+           <EditProduct products={products}/>
+          </React.Fragment>
+        )} />
+        
+        <Route exact path={"/products/:id"} render={props => (
+          <React.Fragment>
+            <FieldNames/>
             <Preview products={products} />
           </React.Fragment>
         )} />
-        
-        <Route exact path="/products/{id}/edit" render={props => (
-          <React.Fragment>
-            
-          </React.Fragment>
-        )} />
-        
         
       </div>
     </Router>

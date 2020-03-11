@@ -1,9 +1,0 @@
-{
-    "Products":[
-        { "ID": 1, "Name": "Broccoli", "EAN": "4111111111111", "Type": "vegetable", "Weight": "1", "Color": "Green", "Active": false, "Quantity": [3,5,6], "Price": [3, 4, 6]},
-        { "ID": 2, "Name": "Carot", "EAN": "4111111111112", "Type": "vegetable", "Weight": "0.1", "Color": "Orange", "Active": true, "Quantity": [1,2,3], "Price": [3, 2, 1]},
-        { "ID": 3, "Name": "Tomato", "EAN": "4111111111113", "Type": "vegetable", "Weight": "10", "Color": "Red", "Active": false, "Quantity": [4,5,6], "Price": [6, 5, 4]},
-        { "ID": 4, "Name": "Cucumber", "EAN": "4111111111114", "Type": "vegetable", "Weight": "0.2", "Color": "Green", "Active": false, "Quantity": [3,8,6], "Price": [3, 9, 6]}
-    ]
-
-  }

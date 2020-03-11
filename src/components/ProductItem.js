@@ -7,9 +7,8 @@ import {Link} from 'react-router-dom';
 import '../App.css';
 
 
-
 function ProductsItems(props) {
-  
+    
      function productState() {
         props.toggleProduct(props.product.ID)
     }
@@ -18,14 +17,6 @@ function ProductsItems(props) {
         if (window.confirm("Do you really want to Delete this Product?")){
             props.deleteProduct(props.product.ID)
         }  
-    }
-
-    function showProduct() {
-        props.setViewProp(props.product.ID)
-    }
-
-    function changeProduct() {
-        
     }
 
     return (
@@ -41,18 +32,17 @@ function ProductsItems(props) {
             <input type="checkbox" checked={props.product.Active} onChange={productState} />
             </div>
             <div style={{gridColumn: '9 / 12'}}>
-            <Link to={"/products/" + props.product.ID}> <Button variant="outline-secondary" onClick={ showProduct }>VIEW</Button></Link>
-            <Link to="/products"> <Button variant="outline-info" onClick={ changeProduct }>EDIT</Button> </Link>
+            <Link to={"/products/" + props.product.ID}> <Button variant="outline-secondary" >VIEW</Button></Link>
+            <Link to={"/products/edit/" + props.product.ID}> <Button variant="outline-info">EDIT</Button> </Link>
             <Button variant="outline-danger" onClick={ removeProduct } >DELETE</Button>
             </div>
         </div>
     )
 }
 
-
 // PropTypes
 ProductsItems.propTypes = {
     product: PropTypes.object.isRequired
-  }
+ }
 
 export default ProductsItems;
