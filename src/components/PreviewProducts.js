@@ -20,7 +20,7 @@ console.log(currentUrl)
         type: 'spline'
       },
       title: {
-        text: 'Last changes in Product Price '
+        text: 'Changes in Product Price '
       },
       series: [ {
         data:  dataPrice
@@ -40,7 +40,7 @@ console.log(currentUrl)
         type: 'spline'
       },
       title: {
-        text: 'Last changes in Product Quantity '
+        text: 'Changes in Product Quantity '
       },
       series: [ {
         data: dataQuantity
