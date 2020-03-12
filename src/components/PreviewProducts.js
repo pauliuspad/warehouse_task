@@ -5,13 +5,11 @@ import HighchartsReact from 'highcharts-react-official';
 function Preview(props) {
 
  const currentUrl = window.location.pathname.split("/").pop() ;
+console.log(currentUrl)
 
   const PreviewItems = props.products.map((product) => {
   if (product.ID === currentUrl){
 
-    console.log("product.Price " + typeof product.Price)
-    console.log("product.Quantity " + product.Quantity)
-    
     const splitPrice = product.Price.split(" ")
     const splitQuantity = product.Quantity.split(" ")
     const dataPrice = splitPrice.map((number) => parseInt(number))
@@ -27,7 +25,15 @@ function Preview(props) {
       series: [ {
         data:  dataPrice
       }
-      ] };
+      ],
+      yAxis: [
+        {
+          min: 0,
+          title: {
+            text: "Price"
+          }
+        } ] 
+    };
 
     const quantityOptions = {
       chart: {
@@ -38,8 +44,15 @@ function Preview(props) {
       },
       series: [ {
         data: dataQuantity
-      }
-      ] };
+      },
+      ] ,
+      yAxis: [
+        {
+          min: 0,
+          title: {
+            text: "Quantity"
+          }
+        } ] };
 
     return (
       <div>
@@ -59,6 +72,9 @@ function Preview(props) {
       <HighchartsReact highcharts={Highcharts} options={quantityOptions} />
       </div>
       ) 
+  }
+  else{
+    return ""
   }
   })
 

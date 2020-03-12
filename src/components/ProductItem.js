@@ -18,7 +18,7 @@ function ProductsItems(props) {
             props.deleteProduct(props.product.ID)
         }  
     }
-
+// + props.product.ID
     return (
         <div className='ProductItemsStyle ProductsGrid'>
             <div >{ props.product.Name}</div>
@@ -26,14 +26,14 @@ function ProductsItems(props) {
             <div className="alignTextR">{ props.product.Type}</div>
             <div className="alignTextR">{ props.product.Weight}</div>
             <div className="alignTextR">{ props.product.Color}</div>
-            <div className="alignTextR" style={{color:  props.product.Quantity == 0? '#da3b3b' : 'none'}} >{ props.product.Quantity[0]}</div>
+            <div className="alignTextR" style={{color:  props.product.Quantity == 0? 'red' : 'none'}} >{ props.product.Quantity[0]}</div>
             <div className="alignTextR">{ props.product.Price[0]}</div>
             <div style={{textAlign: 'center'}}>
             <input type="checkbox" checked={props.product.Active} onChange={productState} />
             </div>
             <div style={{gridColumn: '9 / 12'}}>
             <Link to={"/products/" + props.product.ID}> <Button variant="outline-secondary" >VIEW</Button></Link>
-            <Link to={"/products/edit/" + props.product.ID}> <Button variant="outline-info">EDIT</Button> </Link>
+            <Link to={"/products/edit/" + props.product.ID }> <Button variant="outline-info">EDIT</Button> </Link>
             <Button variant="outline-danger" onClick={ removeProduct } >DELETE</Button>
             </div>
         </div>

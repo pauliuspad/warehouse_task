@@ -42,6 +42,7 @@ function App() {
   function toggleProduct(id) {
     const newProducts = [...products]
     const product = newProducts.find(product => product.ID === id)
+    console.log("product asds " + product)
     product.Active = !product.Active
     setProduct(newProducts)
   }
@@ -65,6 +66,34 @@ function App() {
     setProduct(prevProducts => {
       return [...prevProducts, {ID: uuidv4(), Name , EAN, Type, Weight, Color, Quantity, Price, Active: false}]
     })
+  }
+
+ function editProduct(id, editStrate){
+    const newProducts = [...products]
+    const editProduct = newProducts.find(product => product.ID === id)
+
+    if(editStrate.Name){
+      editProduct.Name = editStrate.Name
+    }
+    if(editStrate.EAN){
+      editProduct.EAN = editStrate.EAN
+    }
+    if(editStrate.Type){
+      editProduct.Type = editStrate.Type
+    }
+    if(editStrate.Weight){
+      editProduct.Weight = editStrate.Weight
+    }
+    if(editStrate.Color){
+      editProduct.Color = editStrate.Color
+    }
+    if(editStrate.Quantity){
+      editProduct.Quantity = editStrate.Quantity
+    }
+    if(editStrate.Price){
+      editProduct.Price = editStrate.Price
+    }
+      setProduct(newProducts)
   }
 
  // ToDo: bug vith Routs
@@ -101,9 +130,9 @@ function App() {
           </React.Fragment>
         )} />
         
-        <Route exact path={"/products/edit"} render={props => (
+        <Route exact path={"/products/edit/:id"} render={props => (
           <React.Fragment>
-           <EditProduct products={products}/>
+           <EditProduct products={products} editProduct ={editProduct}/>
           </React.Fragment>
         )} />
         
