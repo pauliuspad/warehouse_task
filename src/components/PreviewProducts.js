@@ -5,15 +5,16 @@ import HighchartsReact from 'highcharts-react-official';
 function Preview(props) {
 
  const currentUrl = window.location.pathname.split("/").pop() ;
-console.log(currentUrl)
 
   const PreviewItems = props.products.map((product) => {
   if (product.ID === currentUrl){
 
-    const splitPrice = product.Price.split(" ")
-    const splitQuantity = product.Quantity.split(" ")
-    const dataPrice = splitPrice.map((number) => parseInt(number))
-    const dataQuantity = splitQuantity.map((number) => parseInt(number))
+    const splitPrice = product.Price
+    const splitQuantity = product.Quantity
+
+    const dataPrice = Object.values(splitPrice).map((number) => parseInt(number))
+    const dataQuantity = Object.values(splitQuantity).map((number) => parseInt(number))
+
 
     const priceOptions = {
       chart: {
@@ -23,6 +24,7 @@ console.log(currentUrl)
         text: 'Changes in Product Price '
       },
       series: [ {
+        name: 'Price',
         data:  dataPrice
       }
       ],
@@ -32,7 +34,8 @@ console.log(currentUrl)
           title: {
             text: "Price"
           }
-        } ] 
+        } ],
+        acategories: ['1','2','3','4','5']
     };
 
     const quantityOptions = {
@@ -43,6 +46,7 @@ console.log(currentUrl)
         text: 'Changes in Product Quantity '
       },
       series: [ {
+        name: 'Quantity',
         data: dataQuantity
       },
       ] ,
@@ -62,8 +66,8 @@ console.log(currentUrl)
         <div className="alignTextR">{ product.Type}</div>
         <div className="alignTextR">{ product.Weight}</div>
         <div className="alignTextR">{ product.Color}</div>
-        <div className="alignTextR">{ product.Quantity}</div>
-        <div className="alignTextR">{ product.Price}</div>
+        <div className="alignTextR">{ product.Quantity[0]}</div>
+        <div className="alignTextR">{ product.Price[0]}</div>
         <div style={{textAlign: 'center'}}>
         <input type="checkbox" checked={product.Active} />
         </div>

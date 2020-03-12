@@ -3,11 +3,8 @@ import React from 'react';
 function FieldNames() {
 
     if(window.location.pathname.split("/").pop() !== 'create'){
-      var  activeCheck = <div style={{textAlign: 'center'}}>Active</div>
-     }
-
-  return (
-    <div className='fieldsNameStyle ProductsGrid' >
+      var  fieldNames = (
+        <div className='fieldsNameStyle ProductsGrid' >
             <div >Name</div>
             <div className="alignTextR">EAN</div>
             <div className="alignTextR">Type</div>
@@ -15,8 +12,15 @@ function FieldNames() {
             <div className="alignTextR">Color</div>
             <div className="alignTextR">Quantity</div>
             <div className="alignTextR">Price</div>
-            {activeCheck}
-</div>
+            <div style={{textAlign: 'center'}}>Active</div>
+        </div>
+      )
+     }
+
+  return (
+    <div  >    
+          {fieldNames}  
+    </div>
   )
 }
 

@@ -88,15 +88,24 @@ function App() {
       editProduct.Color = editStrate.Color
     }
     if(editStrate.Quantity){
-      editProduct.Quantity = editStrate.Quantity
+      editProduct.Quantity =[ editStrate.Quantity, ...editProduct.Quantity  ] 
+
+      if(editProduct.Quantity.length >4){
+        editProduct.Quantity.splice(5, 1 )
+      }
+
     }
     if(editStrate.Price){
-      editProduct.Price = editStrate.Price
+      editProduct.Price =[ editStrate.Price, ...editProduct.Price  ] 
+
+      if(editProduct.Price.length >4){
+        editProduct.Price.splice(5, 1 )
+      }
     }
       setProduct(newProducts)
   }
 
- // ToDo: bug vith Routs
+ // ToDo: bug with Routs
   return (
     <Router path="/products" >
       <div className="App">

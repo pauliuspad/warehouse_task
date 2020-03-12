@@ -40,9 +40,9 @@ const EditProduct = props.products.map((product) => {
       <h5>Color</h5>
       <input className="createFiels" type="text" name="Color" onChange={updateState}  placeholder={product.Color} ></input>
       <h5>Quantity</h5>
-      <input className="createFiels" type="number" name="Quantity" onChange={updateState}  placeholder={product.Quantity} ></input>
+      <input className="createFiels" type="number" name="Quantity" onChange={updateState}  placeholder={product.Quantity[0]} ></input>
       <h5>Price</h5>
-      <input className="createFiels" type="number" name="Price" onChange={updateState}  placeholder={product.Price} ></input>
+      <input className="createFiels" type="number" name="Price" onChange={updateState}  placeholder={product.Price[0]} ></input>
       <Link to='/products/' > <Button variant="success" onClick={confirmEdit} type="submit" > Save </Button> </Link>
       </form>
     )
