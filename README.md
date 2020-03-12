@@ -1,6 +1,6 @@
 ## Warehouse app
 
-### Test app out heare:
+### Test app heare:
 
 https://warehouse-app.000webhostapp.com/
 
