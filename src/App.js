@@ -74,14 +74,21 @@ function App() {
         <LayoutHeader />
         <Route exact path="/products/create" render={props => (
           <React.Fragment>
-            <div className=' ProductsGrid'>
-              <input ref={productName} type="text" name="Name" placeholder="Name of the product" ></input>
-              <input ref={productEAN} type="number" name="EAN" placeholder="EAN" ></input>
-              <input ref={productType} type="text" name="Type" placeholder="Type" ></input>
-              <input ref={productWeight} type="number" name="Weight" placeholder="Weight" ></input>
-              <input ref={productColor} type="text" name="Color" placeholder="Color" ></input>
-              <input ref={productQuantity} type="number" name="Quantity" placeholder="Quantity" ></input>
-              <input ref={productPrice} type="number" name="Price" placeholder="Price" ></input>
+            <div className='displayGrid '>
+              <h5>Name</h5>
+              <input ref={productName} className="createFiels" type="text" name="Name" placeholder="Name of the product" ></input>
+              <h5>EAN</h5>
+              <input ref={productEAN} className="createFiels" type="number" name="EAN" placeholder="EAN" ></input>
+              <h5>Type</h5>
+              <input ref={productType} className="createFiels" type="text" name="Type" placeholder="Type" ></input>
+              <h5>Weight</h5>
+              <input ref={productWeight} className="createFiels" type="number" name="Weight" placeholder="Weight" ></input>
+              <h5>Color</h5>
+              <input ref={productColor} className="createFiels" type="text" name="Color" placeholder="Color" ></input>
+              <h5>Quantity</h5>
+              <input ref={productQuantity} className="createFiels" type="number" name="Quantity" placeholder="Quantity" ></input>
+              <h5>Price</h5>
+              <input ref={productPrice} className="createFiels" type="number" name="Price" placeholder="Price" ></input>
               <Link to='/products' > <Button variant="success"  onClick={addProduct}> Save </Button> </Link>
             </div>
           </React.Fragment>

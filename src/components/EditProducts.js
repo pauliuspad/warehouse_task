@@ -31,14 +31,21 @@ const EditProduct = props.products.map((product) => {
 
     console.log(state)
     return(
-      <form >
-      <input type="text" name="Name" onChange={updateState} placeholder={product.Name} ></input>
-      <input type="number" name="EAN" onChange={updateState} placeholder={product.EAN} ></input>
-      <input type="text" name="Type" onChange={updateState}  placeholder={product.Type} ></input>
-      <input type="number" name="Weight" onChange={updateState}  placeholder={product.Weight} ></input>
-      <input type="text" name="Color" onChange={updateState}  placeholder={product.Color} ></input>
-      <input type="number" name="Quantity" onChange={updateState}  placeholder={product.Quantity} ></input>
-      <input type="number" name="Price" onChange={updateState}  placeholder={product.Price} ></input>
+      <form  className='displayGrid '>
+      <h5>Name</h5>
+      <input className="createFiels" type="text" name="Name" onChange={updateState} placeholder={product.Name} ></input>
+      <h5>EAN</h5>
+      <input className="createFiels" type="number" name="EAN" onChange={updateState} placeholder={product.EAN} ></input>
+      <h5>Type</h5>
+      <input className="createFiels" type="text" name="Type" onChange={updateState}  placeholder={product.Type} ></input>
+      <h5>Weight</h5>
+      <input className="createFiels" type="number" name="Weight" onChange={updateState}  placeholder={product.Weight} ></input>
+      <h5>Color</h5>
+      <input className="createFiels" type="text" name="Color" onChange={updateState}  placeholder={product.Color} ></input>
+      <h5>Quantity</h5>
+      <input className="createFiels" type="number" name="Quantity" onChange={updateState}  placeholder={product.Quantity} ></input>
+      <h5>Price</h5>
+      <input className="createFiels" type="number" name="Price" onChange={updateState}  placeholder={product.Price} ></input>
       <Link to='/products/edit' > <Button variant="success" onClick={confirmEdit} type="submit" > Save </Button> </Link>
       </form>
     )

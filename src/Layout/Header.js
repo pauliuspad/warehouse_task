@@ -8,7 +8,7 @@ function Header() {
   return (
       <header style={headerStyle}>
           <h1>Warehouse App</h1>
-          <Link class="btn btn-secondary" to="/products">Products</Link>  <Link class="btn btn-secondary" to="/products/create">Create new</Link>
+          <Link className="btn btn-secondary" to="/products">Products</Link>  <Link className="btn btn-secondary" to="/products/create">Create new</Link>
       </header>
   )
 }

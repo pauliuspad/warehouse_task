@@ -5,9 +5,17 @@ import HighchartsReact from 'highcharts-react-official';
 function Preview(props) {
 
  const currentUrl = window.location.pathname.split("/").pop() ;
-console.log(currentUrl)
+
   const PreviewItems = props.products.map((product) => {
   if (product.ID === currentUrl){
+
+    console.log("product.Price " + typeof product.Price)
+    console.log("product.Quantity " + product.Quantity)
+    
+    const splitPrice = product.Price.split(" ")
+    const splitQuantity = product.Quantity.split(" ")
+    const dataPrice = splitPrice.map((number) => parseInt(number))
+    const dataQuantity = splitQuantity.map((number) => parseInt(number))
 
     const priceOptions = {
       chart: {
@@ -17,7 +25,7 @@ console.log(currentUrl)
         text: 'Last changes in Product Price '
       },
       series: [ {
-        data: [product.Price]
+        data:  dataPrice
       }
       ] };
 
@@ -29,7 +37,7 @@ console.log(currentUrl)
         text: 'Last changes in Product Quantity '
       },
       series: [ {
-        data:[product.Quantity]
+        data: dataQuantity
       }
       ] };
 
