@@ -8,6 +8,7 @@ import Preview from './components/PreviewProducts';
 import EditProduct from './components/EditProducts';
 import LayoutHeader from './Layout/Header';
 import FieldNames from './Layout/FieldNames';
+import BackButton from './Layout/Back';
 
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -142,6 +143,7 @@ function App() {
         <Route exact path={"/products/edit/:id"} render={props => (
           <React.Fragment>
            <EditProduct products={products} editProduct ={editProduct}/>
+           <BackButton/>
           </React.Fragment>
         )} />
         
@@ -149,6 +151,7 @@ function App() {
           <React.Fragment>
             <FieldNames/>
             <Preview products={products} />
+            <BackButton/>
           </React.Fragment>
         )} />
         

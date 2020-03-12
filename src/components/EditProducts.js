@@ -7,8 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Edit(props) {
 const currentUrl = window.location.pathname.split("/").pop() ;
-// temporary for testing
-//const currentUrl = "053c54ad-dbda-4ab6-8e04-af1878110254"
 
 const [state, setState] = useState({})
 

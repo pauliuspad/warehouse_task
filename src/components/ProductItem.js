@@ -18,7 +18,7 @@ function ProductsItems(props) {
             props.deleteProduct(props.product.ID)
         }  
     }
-// + props.product.ID
+
     return (
         <div className='ProductItemsStyle ProductsGrid'>
             <div >{ props.product.Name}</div>
